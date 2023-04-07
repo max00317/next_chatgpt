@@ -13,7 +13,6 @@ async function createStream(req: NextRequest) {
     const content = await (
       await res.text()
     ).replace(/provided:.*. You/, "provided: ***. You");
-    console.log("[Stream] error ", content);
     return "```json\n" + content + "```";
   }
 
@@ -52,7 +51,6 @@ export async function POST(req: NextRequest) {
     const stream = await createStream(req);
     return new Response(stream);
   } catch (error) {
-    console.error("[Chat Stream]", error);
     return new Response(
       ["```json\n", JSON.stringify(error, null, "  "), "\n```"].join(""),
     );

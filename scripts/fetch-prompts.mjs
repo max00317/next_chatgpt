@@ -17,13 +17,13 @@ async function fetchCN() {
     const raw = await (await fetch(CN_URL)).json();
     return raw.map((v) => [v.act, v.prompt]);
   } catch (error) {
-    console.error("[Fetch] failed to fetch cn prompts", error);
+    // console.error("[Fetch] failed to fetch cn prompts", error);
     return [];
   }
 }
 
 async function fetchEN() {
-  console.log("[Fetch] fetching en prompts...");
+  // console.log("[Fetch] fetching en prompts...");
   try {
     const raw = await (await fetch(EN_URL)).text();
     return raw
@@ -31,7 +31,7 @@ async function fetchEN() {
       .slice(1)
       .map((v) => v.split('","').map((v) => v.replace('"', "")));
   } catch (error) {
-    console.error("[Fetch] failed to fetch cn prompts", error);
+    // console.error("[Fetch] failed to fetch cn prompts", error);
     return [];
   }
 }
@@ -42,11 +42,11 @@ async function main() {
       fs.writeFile(FILE, JSON.stringify({ cn, en }));
     })
     .catch((e) => {
-      console.error("[Fetch] failed to fetch prompts");
+      // console.error("[Fetch] failed to fetch prompts");
       fs.writeFile(FILE, JSON.stringify({ cn: [], en: [] }));
     })
     .finally(() => {
-      console.log("[Fetch] saved to " + FILE);
+      // console.log("[Fetch] saved to " + FILE);
     });
 }
 

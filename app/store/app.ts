@@ -370,7 +370,6 @@ export const useChatStore = create<ChatStore>()(
         });
 
         // make request
-        console.log("[User Input] ", sendMessages);
         requestChatStream(sendMessages, {
           onMessage(content, done) {
             // stream response
@@ -503,12 +502,12 @@ export const useChatStore = create<ChatStore>()(
 
         const lastSummarizeIndex = session.messages.length;
 
-        console.log(
-          "[Chat History] ",
-          toBeSummarizedMsgs,
-          historyMsgLength,
-          config.compressMessageLengthThreshold,
-        );
+        // console.log(
+        //   "[Chat History] ",
+        //   toBeSummarizedMsgs,
+        //   historyMsgLength,
+        //   config.compressMessageLengthThreshold,
+        // );
 
         if (historyMsgLength > config.compressMessageLengthThreshold) {
           requestChatStream(
@@ -522,12 +521,12 @@ export const useChatStore = create<ChatStore>()(
               onMessage(message, done) {
                 session.memoryPrompt = message;
                 if (done) {
-                  console.log("[Memory] ", session.memoryPrompt);
+                  // console.log("[Memory] ", session.memoryPrompt);
                   session.lastSummarizeIndex = lastSummarizeIndex;
                 }
               },
               onError(error) {
-                console.error("[Summarize] ", error);
+                // console.error("[Summarize] ", error);
               },
             },
           );

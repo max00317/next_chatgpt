@@ -66,7 +66,6 @@ export async function requestChat(messages: Message[]) {
     const response = (await res.json()) as ChatReponse;
     return response;
   } catch (error) {
-    console.error("[Request Chat] ", error, res.body);
   }
 }
 
@@ -131,7 +130,6 @@ export async function requestChatStream(
     filterBot: options?.filterBot,
   });
 
-  console.log("[Request] ", req);
 
   const controller = new AbortController();
   const reqTimeoutId = setTimeout(() => controller.abort(), TIME_OUT_MS);
@@ -180,14 +178,11 @@ export async function requestChatStream(
 
       finish();
     } else if (res.status === 401) {
-      console.error("Anauthorized");
       options?.onError(new Error("Anauthorized"), res.status);
     } else {
-      console.error("Stream Error", res.body);
       options?.onError(new Error("Stream Error"), res.status);
     }
   } catch (err) {
-    console.error("NetWork Error", err);
     options?.onError(err as Error);
   }
 }

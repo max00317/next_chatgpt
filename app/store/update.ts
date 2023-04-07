@@ -34,10 +34,10 @@ export const useUpdateStore = create<UpdateStore>()(
             lastUpdate: Date.now(),
             remoteId,
           }));
-          console.log("[Got Upstream] ", remoteId);
+          // console.log("[Got Upstream] ", remoteId);
           return remoteId;
         } catch (error) {
-          console.error("[Fetch Upstream Commit Id]", error);
+          // console.error("[Fetch Upstream Commit Id]", error);
           return getCurrentVersion();
         }
       },

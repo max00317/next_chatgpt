@@ -13,14 +13,13 @@ try {
     .toString()
     .trim();
 } catch (e) {
-  console.error("No git or not from git repo.");
 }
 
 export const metadata = {
-  title: "ChatGPT Next Web",
+  title: "Christiaan ChatGPT",
   description: "Your personal ChatGPT Chat Bot.",
   appleWebApp: {
-    title: "ChatGPT Next Web",
+    title: "Christiaan ChatGPT",
     statusBarStyle: "default",
   },
   themeColor: "#fafafa",

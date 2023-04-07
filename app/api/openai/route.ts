@@ -9,7 +9,6 @@ async function makeRequest(req: NextRequest) {
     res.headers.set("Cache-Control", "no-cache");
     return res;
   } catch (e) {
-    console.error("[OpenAI] ", req.body, e);
     return NextResponse.json(
       {
         error: true,
